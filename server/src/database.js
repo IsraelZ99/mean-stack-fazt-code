@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 
-
-
 mongoose
-  .connect("mongodb://localhost:/mean-employees")
+  .connect("mongodb://localhost", { dbName: 'mean-employees', user: 'mongo', pass: 'm0ng01234' })
   .then((db) => {
     console.log("db is connected");
   })

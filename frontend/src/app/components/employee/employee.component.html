@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <app-form-employee
+          [employee]="employeeToUpdate"
+          (employeeSaved)="formSent($event)"
+        ></app-form-employee>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Profile image</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Office</th>
+          <th>salary</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>
+            <ngx-avatar [src]="profileImage(employee.image)"></ngx-avatar>
+          </td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.office }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary me-2 btn-sm"
+              (click)="assignEmployeeToUpdate(employee)"
+            >
+              <em class="material-icons">edit</em>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              (click)="removeEmployee(employee._id)"
+            >
+              <em class="material-icons">delete</em>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
